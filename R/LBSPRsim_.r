@@ -361,6 +361,10 @@ LBSPRsim_ <- function(LB_pars=NULL, Control=list(), verbose=TRUE, doCheck=TRUE) 
                                              "VulnF"))), 6)
   LBobj@maxFM <- maxFM
   LBobj@SPRatsize <- SPRatsize
-  LBobj@Select <- data.frame(Gear.Select=SelLen2a, MLL=plegal2, Exploit.Select=SelLen2)
+  LBobj@Select <- if (modType == "GTG") {
+    data.frame(Gear.Select=SelLen2a, MLL=plegal2, Exploit.Select=SelLen2)
+  } else {
+    data.frame(Gear.Select=MSX, Exploit.Select=MSX)
+  }
   LBobj
 }
